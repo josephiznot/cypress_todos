@@ -27,7 +27,6 @@ class Todo extends Component {
     this.state = {};
   }
   render() {
-    console.log(this.props.isComplete);
     return (
       <div className="">
         <Card className="todos" style={styles.card}>
