@@ -12,15 +12,16 @@ class App extends Component {
       error: false,
       inputText: "",
       todos: [
-        {
-          id: 1,
-          title: "Teach Cypress Testing Suite",
-          isComplete: false
-        }
+        // {
+        //   id: 1,
+        //   title: "Teach Cypress Testing Suite",
+        //   isComplete: false
+        // }
       ]
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheckBoxSelect = this.handleCheckBoxSelect.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +51,18 @@ class App extends Component {
       });
   }
 
+  handleCheckBoxSelect(id) {
+    console.log("id: ", id);
+    axios
+      .put(`/api/todos/${id}`)
+      .then(({ data }) => {
+        this.setState({ todos: data });
+      })
+      .catch(() => {
+        this.setState({ error: true });
+      });
+  }
+
   render() {
     return (
       <div className="App">
@@ -66,7 +79,10 @@ class App extends Component {
             placeholder="Add new Todo"
           />
         </form>
-        <List todos={this.state.todos} />
+        <List
+          handleCheckBoxSelect={this.handleCheckBoxSelect}
+          todos={this.state.todos}
+        />
       </div>
     );
   }

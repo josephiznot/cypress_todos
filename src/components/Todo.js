@@ -37,6 +37,7 @@ class Todo extends Component {
               checkedIcon={<CheckBox />}
               uncheckedIcon={<CheckBoxOutlineBlank />}
               checked={this.props.isComplete}
+              onClick={() => this.props.handleCheckBoxSelect(this.props.id)}
             />
             {this.props.title}{" "}
           </div>

@@ -8,7 +8,13 @@ class List extends Component {
   }
   render() {
     const list = this.props.todos.map((todo, ind) => {
-      return <Todo {...todo} key={ind} />;
+      return (
+        <Todo
+          handleCheckBoxSelect={this.props.handleCheckBoxSelect}
+          {...todo}
+          key={ind}
+        />
+      );
     });
     return <div>{list}</div>;
   }
