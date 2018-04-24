@@ -12,15 +12,21 @@ class App extends Component {
       error: false,
       inputText: "",
       todos: [
-        // {
-        //   id: 1,
-        //   title: "Teach Cypress Testing Suite",
-        //   isComplete: false
-        // }
+        {
+          id: 1,
+          title: "Teach Cypress Testing Suite",
+          isComplete: false
+        }
       ]
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get("/api/todos").then(({ data }) => {
+      this.setState({ todos: data });
+    });
   }
 
   handleInputChange(event) {
@@ -48,9 +54,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
-        <span className={this.state.error ? "error" : ""}>
-          Oh snap, something went wrong!
-        </span>
+        {this.state.error && (
+          <span className="error">Oh snap, something went wrong!</span>
+        )}
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleInputChange}
