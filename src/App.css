@@ -27,6 +27,16 @@
     transform: rotate(360deg);
   }
 }
+.error {
+  min-height: 50px;
+  font-size: 2rem;
+  width: 20vw;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
 .new_todo {
   padding: 0px;
   position: relative;
