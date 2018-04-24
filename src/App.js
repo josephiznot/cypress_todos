@@ -48,16 +48,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
-        <span
-          style={{
-            display: this.state.error ? "block" : "none",
-            backgroundColor: "red",
-            height: "50px",
-            width: "200px",
-            margin: "auto"
-          }}
-        >
-          Oh No!
+        <span className={this.state.error ? "error" : ""}>
+          Oh snap, something went wrong!
         </span>
         <form onSubmit={this.handleSubmit}>
           <input
