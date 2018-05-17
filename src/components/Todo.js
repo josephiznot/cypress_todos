@@ -28,7 +28,7 @@ class Todo extends Component {
   }
   render() {
     return (
-      <div className="">
+      <div data-cy-todo className="">
         <Card className="todos" style={styles.card}>
           <div>
             {" "}
